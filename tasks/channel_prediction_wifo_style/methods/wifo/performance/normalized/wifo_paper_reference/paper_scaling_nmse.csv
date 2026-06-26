@@ -1,0 +1,8 @@
+pretraining_datasets,model,time_d1_d5_d9_d15,time_d17,time_d18,frequency_d1_d5_d9_d15,frequency_d17,frequency_d18,source
+D1-D16,WiFo-Tiny,0.315,0.444,0.506,0.343,0.440,0.399,Table 7
+D1-D16,WiFo-Little,0.271,0.371,0.446,0.260,0.284,0.301,Table 7
+D1-D16,WiFo-Small,0.245,0.326,0.421,0.239,0.245,0.299,Table 7
+D1-D16,WiFo-Base,0.237,0.305,0.420,0.232,0.229,0.280,Table 7
+D1-D16,WiFo-Large,0.234,0.314,0.416,0.226,0.232,0.276,Table 7
+"D1,D2,D5,D6,D9,D12,D15,D16",WiFo-Base,0.261,0.356,0.477,0.258,0.269,0.345,Table 7
+"D1,D5,D9,D15",WiFo-Base,0.306,0.960,0.636,0.320,1.036,0.523,Table 7

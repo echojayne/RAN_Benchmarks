@@ -1,0 +1,35 @@
+reference:
+  name: wifo_benchmark
+  description: >
+    Curated audit config for the original WiFo-style channel-prediction method.
+    The retained upstream entrypoint is CLI-driven; this file records the data,
+    model-size, and retained-weight conventions used by the benchmark tree.
+  source_urls:
+    - https://arxiv.org/abs/2412.08908
+
+dataset:
+  train_val_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/train_val_data
+  test_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/test_data
+  test_families: [D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, D18]
+  sample_file: X_test.mat
+
+model:
+  entrypoint: wifo_prediction/main.py
+  sizes: [base, small, little, tiny]
+  default_size: base
+  default_patch_size: 4
+  default_time_patch_size: 4
+  default_position_embedding: SinCos_3D
+
+weights:
+  original_weights_dir: weights/original_weights
+  base_checkpoint_stem: wifo_base
+
+evaluation:
+  default_dataset: D17
+  default_batch_size: 128
+  normalized_results_dir: performance/normalized/wifo_paper_reference
+  metric_note: >
+    Original WiFo scripts report channel-prediction NMSE through the upstream
+    TrainLoop. Paper-reference tables and the local retained D17 reproduction
+    are normalized under performance/normalized/wifo_paper_reference.

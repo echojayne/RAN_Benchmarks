@@ -1,0 +1,164 @@
+schema_version: 1
+target_root: ${RAN_BENCHMARK_ROOT}
+source_root: ${RAN_BENCHMARK_ASSET_ROOT}
+created_for: StruJEPA_related_RAN_benchmark_asset_reorg
+policy:
+  copied_into_target:
+    - small_method_source_trees
+    - configs
+    - papers
+    - task_readmes
+    - legacy_docs
+  linked_into_target:
+    - large_datasets
+    - retained_model_weights
+    - historical_runs
+    - generated_result_payloads
+    - legacy_source_archives
+  note: >
+    Links preserve the original audit path and avoid duplicating large data.
+    Use this manifest as the source list if a future server needs real copied
+    assets instead of symlinks.
+
+tasks:
+  channel_estimation:
+    target: tasks/channel_estimation
+    description: OFDM channel estimation benchmark family.
+    dataset:
+      id: ofdm_channel_estimation_common
+      target: tasks/channel_estimation/datasets/ofdm_channel_estimation_common
+      sources:
+        train_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/common/train_data
+        val_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/common/val_data
+        test_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/common/test_data
+        archive: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/common.zip
+    task_source:
+      target: tasks/channel_estimation/ofdm_channel_estimation
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/channel_estimation
+      copy_policy: copied_without_git_or_pycache
+    methods:
+      adafortitran:
+        target: tasks/channel_estimation/methods/adafortitran
+        paper: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/references/AdaFortiTran_An_Adaptive_Transformer_Model_for_Robust_OFDM_Channel_Estimation.pdf
+        implementation: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/channel_estimation
+        public_compat: tasks/channel_estimation/methods/adafortitran/public_compat/adafortitran_public
+        retained_assets:
+          official_public_final: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/assets/official_public_final
+          static_baseline: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/assets/static_baseline
+          reference_curves: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/assets/reference_curves
+      ammse:
+        target: tasks/channel_estimation/methods/ammse
+        paper: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/ammse/references/2506.00452v4.pdf
+        implementation: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/channel_estimation
+        retained_assets:
+          paper_strict_current_benchmark_final: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/ammse/assets/paper_strict_current_benchmark_final
+          static_baseline: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/ammse/assets/static_baseline
+  channel_prediction_wifo_style:
+    target: tasks/channel_prediction_wifo_style
+    description: WiFo-style channel prediction benchmark family.
+    dataset:
+      id: wifo_channel_prediction
+      target: tasks/channel_prediction_wifo_style/datasets/wifo_channel_prediction
+      sources:
+        train_val_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/train_val_data
+        test_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/test_data
+    methods:
+      wifo:
+        target: tasks/channel_prediction_wifo_style/methods/wifo
+        paper: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/wifo/reference/2412.08908v2.pdf
+        implementation: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/wifo
+        retained_assets:
+          original_weights: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/original_weights
+  traffic_prediction:
+    target: tasks/traffic_prediction
+    description: Milan telecom traffic forecasting benchmark family.
+    dataset:
+      id: milan_telecom_traffic
+      target: tasks/traffic_prediction/datasets/milan_telecom_traffic
+      sources:
+        raw_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/raw_data
+        prepared_data: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+    task_source:
+      target: tasks/traffic_prediction/traffic_prediction_core
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/traffic_forecasting
+      copy_policy: copied_without_git_or_pycache
+    methods:
+      itransformer:
+        target: tasks/traffic_prediction/methods/itransformer
+        paper: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/itransformer/references/2310.06625v4.pdf
+        implementation: tasks/traffic_prediction/traffic_prediction_core
+        citywide_compat_copy: tasks/traffic_prediction/methods/itransformer/citywide_compat
+        retained_assets:
+          static_baseline: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/itransformer/assets/static_baseline
+          well_done_citywide_noholiday_r2filtered: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/itransformer/assets/well_done_citywide_noholiday_r2filtered
+      lstm:
+        target: tasks/traffic_prediction/methods/lstm
+        retained_assets:
+          train_run: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/lstm/assets/train_run
+      tcn:
+        target: tasks/traffic_prediction/methods/tcn
+        retained_assets:
+          train_run: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/tcn/assets/train_run
+      naive:
+        target: tasks/traffic_prediction/methods/naive
+        retained_assets:
+          eval_run: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/naive/assets/eval_run
+      seasonal_naive:
+        target: tasks/traffic_prediction/methods/seasonal_naive
+        retained_assets:
+          eval_run: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/seasonal_naive/assets/eval_run
+      weekly_seasonal_naive:
+        target: tasks/traffic_prediction/methods/weekly_seasonal_naive
+        retained_assets:
+          eval_run: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/weekly_seasonal_naive/assets/eval_run
+      mltp:
+        target: tasks/traffic_prediction/methods/mltp
+        paper: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/mltp/references/A_Meta-Learning_Based_Framework_for_Cell-Level_Mobile_Network_Traffic_Prediction.pdf
+        retained_assets:
+          paper_aligned_results: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/mltp/assets/paper_aligned_results
+  beam_management:
+    target: tasks/beam_management
+    description: BeamFormer 28 GHz home/office beam management benchmark family.
+    dataset:
+      id: homeoffice_28g_beamformer
+      target: tasks/beam_management/datasets/homeoffice_28g_beamformer
+      sources:
+        raw: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/raw
+        generated_csi: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/generated_csi
+        csi_dataset: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/csi-dataset
+        mini_demo: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/mini_demo
+    methods:
+      beamformer:
+        target: tasks/beam_management/methods/beamformer
+        github: https://github.com/Shunqiang-Feng/BeamFormer.git
+        retained_commit: 8e9b171d77aeb996e884deb4e29420b2fc472667
+        implementation: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/source
+        dataset_processing: ${RAN_BENCHMARK_ASSET_ROOT}/source_snapshots/beamformer/dataset_processing
+        retained_assets:
+          original_final: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/original_weights/final
+          upstream_reference_results: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/results/original
+external_elastic_methods:
+  target_root: ${ELASTIC_INFERENCE_METHODS_ROOT}
+  adapter_inventory: ${ELASTIC_INFERENCE_METHODS_ROOT}/catalog/adapter_inventory.yaml
+  note: >
+    DynaBERT, MatFormer, and OFA were migrated out of ran_benchmarks so this
+    repository can keep original RAN benchmark methods separate from
+    cross-benchmark elastic inference baselines.
+  dynabert:
+    target: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert
+    source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert
+    paper: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/references/NeurIPS-2020-dynabert-dynamic-bert-with-adaptive-width-and-depth-Paper.pdf
+    github: https://github.com/huawei-noah/Pretrained-Language-Model.git
+    retained_commit: 0598f02d7fc4eaa7b4cbc1e9d7ab18bc875c24f9
+  matformer:
+    target: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer
+    source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer
+    paper: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/references/2310.07707v2.pdf
+    github: null
+    retained_commit: local_implementation_no_nested_git_found
+  ofa:
+    target: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa
+    source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA
+    paper: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/references/1908.09791v5.pdf
+    github: https://github.com/mit-han-lab/once-for-all.git
+    retained_commit: f03b2673db313b9167e2a1c2b7a5cad540cc1313

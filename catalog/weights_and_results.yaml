@@ -1,0 +1,311 @@
+schema_version: 1
+target_root: ${RAN_BENCHMARK_ROOT}
+purpose: retained_run_weight_result_index
+note: >
+  This file maps retained runs to known checkpoint, config, history, and
+  performance artifacts. A run directory may contain additional files. When the
+  original workspace does not explicitly encode a one-to-one point-to-checkpoint
+  mapping, the run root is retained as the audit boundary.
+
+channel_estimation:
+  adafortitran:
+    official_public_final:
+      run: tasks/channel_estimation/methods/adafortitran/runs/official_public_final
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/assets/official_public_final
+      weights:
+        - best.pt
+      performance:
+        - README.md
+      mapping_status: run_level_weight_result_boundary
+    static_baseline_seed13_lr1e-3:
+      run: tasks/channel_estimation/methods/adafortitran/runs/static_baseline/seed13_lr1e-3
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/adafortitran/assets/static_baseline/seed13_lr1e-3
+      weights:
+        - best.pt
+      training:
+        - train_history.json
+      performance:
+        - eval_full_snr/per_sample_metrics.csv
+        - eval_full_snr/mse_db_vs_snr.csv
+        - eval_unified_snr/per_sample_metrics.csv
+        - eval_unified_doppler/per_sample_metrics.csv
+        - eval_unified_delay_spread/per_sample_metrics.csv
+      mapping_status: run_level_weight_result_boundary
+  ammse:
+    paper_strict_current_benchmark_final:
+      run: tasks/channel_estimation/methods/ammse/runs/paper_strict_current_benchmark_final
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/ammse/assets/paper_strict_current_benchmark_final
+      weights:
+        - best.pt
+      training:
+        - train_history.json
+      performance:
+        - eval_snr/summary.csv
+        - eval_snr/per_sample.csv
+        - eval_doppler/summary.csv
+        - eval_doppler/per_sample.csv
+        - eval_delay_spread/summary.csv
+        - eval_delay_spread/per_sample.csv
+      mapping_status: run_level_weight_result_boundary
+    static_baseline_seed13_lr1e-3:
+      run: tasks/channel_estimation/methods/ammse/runs/static_baseline/seed13_lr1e-3
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_estimation/ammse/assets/static_baseline/seed13_lr1e-3
+      weights:
+        - best.pt
+      training:
+        - train_history.json
+      performance:
+        - eval_full_snr/per_sample_metrics.csv
+        - eval_unified_snr/per_sample_metrics.csv
+        - eval_unified_doppler/per_sample_metrics.csv
+        - eval_unified_delay_spread/per_sample_metrics.csv
+      mapping_status: run_level_weight_result_boundary
+  dynabert:
+    adafortitran_20260524:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_estimation/adafortitran/adafortitran_20260524
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260524/adafortitran
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/adafortitran_dynabert_points.csv
+      mapping_status: run_level_weight_result_boundary
+    ammse_20260524:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_estimation/ammse/ammse_20260524
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260524/ammse
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/ammse_dynabert_points.csv
+      mapping_status: run_level_weight_result_boundary
+  matformer:
+    adafortitran_matformer:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_estimation/adafortitran/adafortitran_matformer
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/adafortitran_matformer
+      config: resolved_config.json
+      training: train_history.json
+      mapping_status: run_level_weight_result_boundary
+    ammse_matformer:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_estimation/ammse/ammse_matformer
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/ammse_matformer
+      config: resolved_config.json
+      training: train_history.json
+      mapping_status: run_level_weight_result_boundary
+  ofa:
+    adafortitran_ofa:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_estimation/adafortitran/adafortitran_ofa
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/adafortitran_ofa
+      config: resolved_config.json
+      training: train_history.json
+      mapping_status: run_level_weight_result_boundary
+    ammse_ofa:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_estimation/ammse/ammse_ofa
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/ammse_ofa
+      config: resolved_config.json
+      training: train_history.json
+      mapping_status: run_level_weight_result_boundary
+
+channel_prediction_wifo_style:
+  wifo:
+    original_weights:
+      run: tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/channel_prediction/wifo/assets/original_weights
+      weights:
+        - original_weights_directory
+      mapping_status: retained_original_weights_only
+  dynabert:
+    wifo_base_20260524:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_base_20260524
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260524/wifo_base
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/wifo_base_dynabert_points.csv
+    wifo_small_20260524:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_small_20260524
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260524/wifo_small
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/wifo_small_dynabert_points.csv
+    wifo_little_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_little_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260527_converged/wifo_little
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/wifo_little_dynabert_points.csv
+    wifo_tiny_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_tiny_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260527_converged/wifo_tiny
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/wifo_tiny_dynabert_points.csv
+  matformer:
+    wifo_base_matformer:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_base_matformer
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/wifo_base_matformer
+      config: resolved_config.json
+      training: train_history.json
+    wifo_small_matformer:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_small_matformer
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/wifo_small_matformer
+      config: resolved_config.json
+      training: train_history.json
+    wifo_little_matformer_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_little_matformer_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/wifo_little_matformer_20260527_converged
+      config: resolved_config.json
+      training: train_history.json
+    wifo_tiny_matformer_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_tiny_matformer_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/wifo_tiny_matformer_20260527_converged
+      config: resolved_config.json
+      training: train_history.json
+  ofa:
+    wifo_base_ofa:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_base_ofa
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/wifo_base_ofa
+      config: resolved_config.json
+      training: train_history.json
+    wifo_small_ofa:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_small_ofa
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/wifo_small_ofa
+      config: resolved_config.json
+      training: train_history.json
+    wifo_little_ofa_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_little_ofa_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/20260527_converged/wifo_little_ofa
+      config: resolved_config.json
+      training: train_history.json
+    wifo_tiny_ofa_20260527_converged:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/channel_prediction_wifo_style/wifo/wifo_tiny_ofa_20260527_converged
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/20260527_converged/wifo_tiny_ofa
+      config: resolved_config.json
+      training: train_history.json
+
+traffic_prediction:
+  itransformer:
+    static_baseline:
+      run: tasks/traffic_prediction/methods/itransformer/runs/static_baseline
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/itransformer/assets/static_baseline
+      protocol: main_64cell_context24_horizon6
+      weights:
+        - best.pt
+      training: train_history.json
+    well_done_citywide_noholiday_r2filtered:
+      run: tasks/traffic_prediction/methods/itransformer/runs/well_done_citywide_noholiday_r2filtered
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/itransformer/assets/well_done_citywide_noholiday_r2filtered
+      protocol: citywide_9943cell_context3_horizon1
+      code_copy: tasks/traffic_prediction/methods/itransformer/citywide_compat
+      weights:
+        - checkpoints/best.pt
+      performance:
+        - metrics/per_cell_metrics.csv
+  lstm:
+    train_run:
+      run: tasks/traffic_prediction/methods/lstm/runs/train_run
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/lstm/assets/train_run
+      weights:
+        - best.pt
+      training: train_history.json
+  tcn:
+    train_run:
+      run: tasks/traffic_prediction/methods/tcn/runs/train_run
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/tcn/assets/train_run
+      weights:
+        - best.pt
+      training: train_history.json
+  naive:
+    eval_run:
+      run: tasks/traffic_prediction/methods/naive/runs/eval_run
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/naive/assets/eval_run
+      performance:
+        - metrics_summary.csv
+        - metrics_summary.json
+        - per_sample_metrics.csv
+  seasonal_naive:
+    eval_run:
+      run: tasks/traffic_prediction/methods/seasonal_naive/runs/eval_run
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/seasonal_naive/assets/eval_run
+      performance:
+        - metrics_summary.csv
+        - metrics_summary.json
+        - per_sample_metrics.csv
+  weekly_seasonal_naive:
+    eval_run:
+      run: tasks/traffic_prediction/methods/weekly_seasonal_naive/runs/eval_run
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/weekly_seasonal_naive/assets/eval_run
+      status: unavailable_for_current_protocol
+      note: >
+        Current 24-hour context is shorter than the 168-hour seasonal period,
+        so the implementation falls back to last-value forecasting and matches
+        the naive metrics.
+      performance:
+        - metrics_summary.csv
+        - metrics_summary.json
+        - per_sample_metrics.csv
+  mltp:
+    paper_aligned_results:
+      run: tasks/traffic_prediction/methods/mltp/runs/paper_aligned_results
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/baselines/mltp/assets/paper_aligned_results
+      performance:
+        - week_sweep_aggregate_with_mltp.csv
+        - week_sweep_mltp_metrics.csv
+        - week_sweep_mltp_per_cell.csv
+  dynabert:
+    itransformer_20260524:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/traffic_prediction/itransformer/itransformer_20260524
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/20260524/itransformer
+      config: resolved_config.json
+      training: train_history.json
+      performance:
+        - eval/itransformer_dynabert_points.csv
+  matformer:
+    itransformer_matformer:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/traffic_prediction/itransformer/itransformer_matformer
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/itransformer_matformer
+      config: resolved_config.json
+      training: train_history.json
+  ofa:
+    itransformer_ofa:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/traffic_prediction/itransformer/itransformer_ofa
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/itransformer_ofa
+      config: resolved_config.json
+      training: train_history.json
+
+beam_management:
+  beamformer:
+    original_final:
+      run: tasks/beam_management/methods/beamformer/weights/original_final
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/assets/original_weights/final
+      weights:
+        - arn_model.pth
+        - estimator.pth
+        - generator.pth
+    upstream_reference_results:
+      run: tasks/beam_management/methods/beamformer/performance/raw_data/upstream_reference_results
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/beam_management/beamformer/results/original
+      performance:
+        - full_test_local_continued_train1000/per_sample_rss_loss.csv
+        - full_test_pretrained/per_sample_rss_loss.csv
+        - mini_smoke/per_sample_rss_loss.csv
+        - python_csi_smoke_pretrained/per_sample_rss_loss.csv
+  dynabert:
+    beamformer_train20k_fullval_gpu1_20260611:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs/ran_benchmarks/beam_management/beamformer/beamformer_train20k_fullval_gpu1_20260611
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/dynabert/runs/beamformer_train20k_fullval_gpu1_20260611
+      config: resolved_config.json
+      training: train_history.json
+  matformer:
+    beamformer_train20k_elasticval_converged_20260610:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs/ran_benchmarks/beam_management/beamformer/beamformer_train20k_elasticval_converged_20260610
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/matformer/runs/beamformer_train20k_elasticval_converged_20260610
+      config: resolved_config.json
+      training: train_history.json
+  ofa:
+    beamformer_train20k_fullval_converged_20260611:
+      run: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs/ran_benchmarks/beam_management/beamformer/beamformer_train20k_fullval_converged_20260611
+      source: ${RAN_BENCHMARK_ASSET_ROOT}/baselines/OFA/runs/beamformer_train20k_fullval_converged_20260611
+      config: resolved_config.json
+      training: train_history.json

@@ -1,0 +1,144 @@
+{
+  "delay_spread": [
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 50,
+      "unit": "ns",
+      "mse_db": -31.5823
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 100,
+      "unit": "ns",
+      "mse_db": -30.8798
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 150,
+      "unit": "ns",
+      "mse_db": -29.871
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 200,
+      "unit": "ns",
+      "mse_db": -30.9936
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 250,
+      "unit": "ns",
+      "mse_db": -30.1779
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "delay_spread",
+      "label": "DS",
+      "condition": 300,
+      "unit": "ns",
+      "mse_db": -28.7014
+    }
+  ],
+  "doppler": [
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "doppler",
+      "label": "DOP",
+      "condition": 200,
+      "unit": "Hz",
+      "mse_db": -30.28
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "doppler",
+      "label": "DOP",
+      "condition": 400,
+      "unit": "Hz",
+      "mse_db": -29.9271
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "doppler",
+      "label": "DOP",
+      "condition": 600,
+      "unit": "Hz",
+      "mse_db": -29.0763
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "doppler",
+      "label": "DOP",
+      "condition": 800,
+      "unit": "Hz",
+      "mse_db": -28.5583
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "doppler",
+      "label": "DOP",
+      "condition": 1000,
+      "unit": "Hz",
+      "mse_db": -25.8762
+    }
+  ],
+  "snr": [
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 0,
+      "unit": "dB",
+      "mse_db": -21.9348
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 5,
+      "unit": "dB",
+      "mse_db": -25.8863
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 10,
+      "unit": "dB",
+      "mse_db": -28.6807
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 15,
+      "unit": "dB",
+      "mse_db": -30.2801
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 20,
+      "unit": "dB",
+      "mse_db": -31.0047
+    },
+    {
+      "method": "adafortitran_official_public_final",
+      "axis": "snr",
+      "label": "SNR",
+      "condition": 25,
+      "unit": "dB",
+      "mse_db": -31.2685
+    }
+  ]
+}

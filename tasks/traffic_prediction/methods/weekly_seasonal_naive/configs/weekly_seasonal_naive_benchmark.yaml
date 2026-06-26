@@ -1,0 +1,14 @@
+data:
+  prepared_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+training:
+  output_dir: outputs/traffic_forecasting/weekly_seasonal_naive_eval
+  device: auto
+model:
+  name: seasonal_naive
+  seasonal_period: 168
+status:
+  validity: unavailable_for_current_protocol
+  reason: >
+    The prepared benchmark context length is 24 hours, which is shorter than
+    the requested 168-hour seasonal period. The implementation falls back to
+    last-value forecasting in this case, so retained results duplicate naive.

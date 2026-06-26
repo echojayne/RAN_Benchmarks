@@ -1,0 +1,8 @@
+data:
+  prepared_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+training:
+  output_dir: outputs/traffic_forecasting/seasonal_naive_eval
+  device: auto
+model:
+  name: seasonal_naive
+  seasonal_period: 24

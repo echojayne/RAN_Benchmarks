@@ -1,0 +1,19 @@
+data:
+  prepared_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+training:
+  output_dir: outputs/traffic_forecasting/itransformer_train
+  device: auto
+  batch_size: 64
+  epochs: 20
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  grad_clip_norm: 1.0
+  num_workers: 0
+  seed: 13
+model:
+  name: itransformer
+  depth: 4
+  d_model: 128
+  num_heads: 8
+  ffn_dim: 256
+  dropout: 0.1

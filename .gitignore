@@ -1,0 +1,84 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Virtual environments and local machine state
+.venv/
+venv/
+env/
+.env
+.env.*
+.DS_Store
+*.swp
+*.swo
+
+# Logs, temporary outputs, and experiment products
+*.log
+logs/
+tmp/
+temp/
+outputs/
+wandb/
+tensorboard/
+**/runs/**
+audit_runs/
+
+# Internal migration/audit notes that contain local machine paths
+docs/benchmark_audit_*.md
+docs/reorg_plan_initial.md
+docs/legacy_ai_ran_benchmarks_docs/
+source_archives/
+catalog/link_inventory.tsv
+catalog/size_snapshot.tsv
+catalog/broken_links.txt
+catalog/migration_manifest_initial.yaml
+
+# Large datasets and local provenance archives
+tasks/*/datasets/*/data/**
+tasks/*/datasets/*/provenance/*.zip
+
+# Papers should be linked from README/docs rather than committed as PDFs.
+**/papers/*.pdf
+*.pdf
+
+# Raw/generated heavy evaluation payloads. Keep summary CSV/JSON/TXT files.
+**/performance/raw_data/**/per_sample*.csv
+**/performance/raw_data/**/*.npz
+**/performance/raw_data/upstream_*
+**/performance/raw_data/upstream_*/
+
+# Default checkpoint policy: ignore weights unless explicitly allowed below.
+**/weights/**
+*.pt
+*.pth
+*.pkl
+*.ckpt
+*.onnx
+*.h5
+
+# Small retained weights intentionally committed for smoke/local evaluation.
+!tasks/channel_estimation/methods/adafortitran/weights/
+!tasks/channel_estimation/methods/adafortitran/weights/official_public_final_best.pt
+!tasks/channel_estimation/methods/ammse/weights/
+!tasks/channel_estimation/methods/ammse/weights/paper_strict_current_benchmark_final_best.pt
+!tasks/traffic_prediction/methods/itransformer/weights/
+!tasks/traffic_prediction/methods/itransformer/weights/static_baseline_best.pt
+!tasks/traffic_prediction/methods/itransformer/weights/well_done_best.pt
+!tasks/traffic_prediction/methods/lstm/weights/
+!tasks/traffic_prediction/methods/lstm/weights/train_run_best.pt
+!tasks/traffic_prediction/methods/tcn/weights/
+!tasks/traffic_prediction/methods/tcn/weights/train_run_best.pt
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/README.md
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/gitattributes
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/wifo_tiny.pkl
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/wifo_little.pkl
+!tasks/channel_prediction_wifo_style/methods/wifo/weights/original_weights/wifo_small.pkl

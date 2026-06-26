@@ -1,0 +1,140 @@
+{
+  "rows": [
+    {
+      "axis": "snr",
+      "condition": "0",
+      "count": 2000,
+      "mse_linear": 0.01048216350376606,
+      "mse_db": -19.795490702903756,
+      "nmse_linear": 0.013724881736479067
+    },
+    {
+      "axis": "snr",
+      "condition": "5",
+      "count": 2000,
+      "mse_linear": 0.003852634874987416,
+      "mse_db": -24.142421482301195,
+      "nmse_linear": 0.00504446987628454
+    },
+    {
+      "axis": "snr",
+      "condition": "10",
+      "count": 2000,
+      "mse_linear": 0.0016769806474039796,
+      "mse_db": -27.75471948926328,
+      "nmse_linear": 0.002195764362167633
+    },
+    {
+      "axis": "snr",
+      "condition": "15",
+      "count": 2000,
+      "mse_linear": 0.0010262892188911792,
+      "mse_db": -29.887302328865285,
+      "nmse_linear": 0.0013437777565331972
+    },
+    {
+      "axis": "snr",
+      "condition": "20",
+      "count": 2000,
+      "mse_linear": 0.0008104324442829239,
+      "mse_db": -30.91283180523795,
+      "nmse_linear": 0.0010611444335124572
+    },
+    {
+      "axis": "snr",
+      "condition": "25",
+      "count": 2000,
+      "mse_linear": 0.0007495988800073973,
+      "mse_db": -31.2517107042961,
+      "nmse_linear": 0.000981491652386679
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "50",
+      "count": 2000,
+      "mse_linear": 0.0006110577041108626,
+      "mse_db": -32.1391777530921,
+      "nmse_linear": 0.0009013030397379211
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "100",
+      "count": 2000,
+      "mse_linear": 0.0008188598754932172,
+      "mse_db": -30.867904084620893,
+      "nmse_linear": 0.0013818965000979857
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "150",
+      "count": 2000,
+      "mse_linear": 0.000774230181297753,
+      "mse_db": -31.111299023145797,
+      "nmse_linear": 0.0010630204128018615
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "200",
+      "count": 2000,
+      "mse_linear": 0.0008095083951920969,
+      "mse_db": -30.91778642400433,
+      "nmse_linear": 0.0010599345244621222
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "250",
+      "count": 2000,
+      "mse_linear": 0.0005646422211721074,
+      "mse_db": -32.48226649797394,
+      "nmse_linear": 0.0008658573531610226
+    },
+    {
+      "axis": "delay_spread",
+      "condition": "300",
+      "count": 2000,
+      "mse_linear": 0.0011202587183215655,
+      "mse_db": -29.506816671529194,
+      "nmse_linear": 0.0018247404021955586
+    },
+    {
+      "axis": "doppler",
+      "condition": "200",
+      "count": 2000,
+      "mse_linear": 0.0022189165931777097,
+      "mse_db": -26.538590219541792,
+      "nmse_linear": 0.002806321858500056
+    },
+    {
+      "axis": "doppler",
+      "condition": "400",
+      "count": 2000,
+      "mse_linear": 0.002110917186306324,
+      "mse_db": -26.75528804021265,
+      "nmse_linear": 0.003497310318412375
+    },
+    {
+      "axis": "doppler",
+      "condition": "600",
+      "count": 2000,
+      "mse_linear": 0.0022078570433077403,
+      "mse_db": -26.560290500000015,
+      "nmse_linear": 0.0034569120858661145
+    },
+    {
+      "axis": "doppler",
+      "condition": "800",
+      "count": 2000,
+      "mse_linear": 0.0018799813973892014,
+      "mse_db": -27.258464478729643,
+      "nmse_linear": 0.0027414850450072446
+    },
+    {
+      "axis": "doppler",
+      "condition": "1000",
+      "count": 2000,
+      "mse_linear": 0.002405531345924828,
+      "mse_db": -26.18788979352656,
+      "nmse_linear": 0.0036336775300582973
+    }
+  ]
+}

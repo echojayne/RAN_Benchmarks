@@ -1,0 +1,42 @@
+dataset:
+  name: telecom_italia_milan
+  dataset_version: manual-local
+  raw_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/raw_data
+  output_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+  file_pattern: "*.txt"
+  source_urls:
+    - https://doi.org/10.7910/DVN/EGZHFV
+    - https://doi.org/10.7910/DVN/QJWLFU
+  column_names:
+    - square_id
+    - time_interval
+    - country_code
+    - sms_in
+    - sms_out
+    - call_in
+    - call_out
+    - internet_traffic
+  region_column: square_id
+  timestamp_column: time_interval
+  target_field: internet_traffic
+  timestamp_unit: ms
+  input_granularity: 10min
+  granularity: 1h
+  aggregate_minutes: 60
+  top_k_regions: 64
+  context_len: 24
+  horizon: 6
+  train_ratio: 0.7
+  val_ratio: 0.1
+  test_ratio: 0.2
+  train_end: "2013-12-08T00:00:00Z"
+  val_end: "2013-12-15T00:00:00Z"
+  test_end: "2013-12-22T00:00:00Z"
+  low_load_quantile: 0.2
+  high_load_quantile: 0.8
+  grid_path: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/raw_data/milano-grid.geojson
+  smoke:
+    enabled: false
+    num_regions: 8
+    num_steps_10m: 4032
+    seed: 7

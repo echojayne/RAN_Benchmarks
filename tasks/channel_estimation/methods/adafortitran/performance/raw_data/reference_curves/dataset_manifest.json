@@ -1,0 +1,130 @@
+{
+  "comparison_splits": [
+    [
+      "snr",
+      "test/SNR_test_set"
+    ],
+    [
+      "delay_spread",
+      "test/DS_test_set"
+    ],
+    [
+      "doppler",
+      "test/MDS_test_set"
+    ]
+  ],
+  "dataset_root": "data",
+  "expected_h_shape": [
+    120,
+    14,
+    2
+  ],
+  "reference": {
+    "code_url": "https://github.com/BerkIGuler/OFDMChannelGenerator",
+    "data_summary": "Official MATLAB generator for 120x14 SISO 5G NR OFDM grids with TDL-A, N=3 frequency pilot spacing, pilot symbols at columns 3 and 12 (1-based), train/val/test splits totaling 144k samples.",
+    "name": "AdaFortiTran",
+    "paper_url": "https://arxiv.org/abs/2505.09076"
+  },
+  "run_outputs": {
+    "detail_csv": "outputs/adafortitran_reference/per_sample_metrics.csv",
+    "lmmse_delay_spread_compare_csv": "outputs/adafortitran_reference/lmmse_target_vs_delay_spread_ns.csv",
+    "lmmse_doppler_compare_csv": "outputs/adafortitran_reference/lmmse_target_vs_doppler_hz.csv",
+    "lmmse_snr_compare_csv": "outputs/adafortitran_reference/lmmse_target_vs_snr.csv",
+    "mse_delay_spread_csv": "outputs/adafortitran_reference/mse_db_vs_delay_spread_ns.csv",
+    "mse_doppler_csv": "outputs/adafortitran_reference/mse_db_vs_doppler_hz.csv",
+    "mse_snr_csv": "outputs/adafortitran_reference/mse_db_vs_snr.csv",
+    "nmse_summary_csv": "outputs/adafortitran_reference/nmse_vs_snr.csv",
+    "summary_json": "outputs/adafortitran_reference/run_summary.json",
+    "target_board_json": "outputs/adafortitran_reference/lmmse_target_board.json"
+  },
+  "splits": {
+    "test": {
+      "count": 12000,
+      "example": {
+        "h_shape": [
+          120,
+          14,
+          2
+        ],
+        "path": "data/test/SNR_test_set/SNR_0/1000_SNR-0_DS-200_DOP-500_N-3_TDL-A.mat",
+        "var_hat": 0.03721136875650494
+      },
+      "path": "data/test/SNR_test_set"
+    },
+    "train": {
+      "count": 100000,
+      "example": {
+        "h_shape": [
+          120,
+          14,
+          2
+        ],
+        "path": "data/train/100000_SNR-10_DS-225_DOP-800_N-3_TDL-A.mat",
+        "var_hat": 0.0037295249542187866
+      },
+      "example_metadata": {
+        "dop": "800",
+        "ds": "225",
+        "index": "100000",
+        "n": "3",
+        "profile": "TDL-A",
+        "snr": "10"
+      },
+      "path": "data/train"
+    },
+    "val": {
+      "count": 10000,
+      "example": {
+        "h_shape": [
+          120,
+          14,
+          2
+        ],
+        "path": "data/val/10000_SNR-5_DS-125_DOP-700_N-3_TDL-A.mat",
+        "var_hat": 0.01080864129148238
+      },
+      "example_metadata": {
+        "dop": "700",
+        "ds": "125",
+        "index": "10000",
+        "n": "3",
+        "profile": "TDL-A",
+        "snr": "5"
+      },
+      "path": "data/val"
+    }
+  },
+  "target_board": {
+    "delay_spread": {
+      "50": -26.3,
+      "100": -25.2,
+      "150": -28.1,
+      "200": -29.9,
+      "250": -29.9,
+      "300": -24.4
+    },
+    "doppler": {
+      "200": -26.4,
+      "400": -25.1,
+      "600": -27.1,
+      "800": -27.2,
+      "1000": -16.6
+    },
+    "metric": "MSE(dB)",
+    "scope": "AdaFortiTran paper-reference only",
+    "snr": {
+      "0": -22.4,
+      "5": -26.1,
+      "10": -28.4,
+      "15": -29.4,
+      "20": -29.8,
+      "25": -30.0
+    },
+    "sources": {
+      "note": "Approximate chart reading with +/-0.3 to +/-0.8 dB tolerance; use for reconciliation only, not as a hard acceptance gate.",
+      "origin": "Fig. 3 visual extraction from the final published ICC 2025 paper"
+    },
+    "tolerance_db_max": 0.8,
+    "tolerance_db_min": 0.3
+  }
+}

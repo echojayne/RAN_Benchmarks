@@ -1,0 +1,7 @@
+data:
+  prepared_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+training:
+  output_dir: outputs/traffic_forecasting/naive_eval
+  device: auto
+model:
+  name: naive

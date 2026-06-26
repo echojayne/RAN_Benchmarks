@@ -1,0 +1,47 @@
+source_prepare_config: traffic_forecasting/config/milan_prepare.yaml
+output_dir: outputs/traffic_forecasting/paper_aligned
+
+benchmark:
+  context_len: 3
+  candidate_cells_path: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data/selected_regions.csv
+  series_start: "2013-11-01T00:00:00Z"
+  series_end: "2013-12-24T00:00:00Z"
+  normalization_start: "2013-11-01T00:00:00Z"
+  normalization_end: "2013-12-24T00:00:00Z"
+  fine_tune_start: "2013-11-04T00:00:00Z"
+  first_week_end: "2013-11-11T00:00:00Z"
+  five_weeks_end: "2013-12-09T00:00:00Z"
+  test_start: "2013-12-09T00:00:00Z"
+  test_end: "2013-12-24T00:00:00Z"
+  top_k_cells: 32
+  include_cells:
+    - 1684
+    - 1884
+    - 7121
+
+training:
+  seed: 17
+  device: auto
+  epochs: 30
+  patience: 5
+  batch_size: 64
+  eval_batch_size: 256
+  val_fraction: 0.1
+  learning_rate: 0.001
+  weight_decay: 0.0001
+
+models:
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.1
+    learning_rate: 0.001
+    weight_decay: 0.0001
+  itransformer:
+    d_model: 96
+    depth: 3
+    num_heads: 3
+    ffn_dim: 192
+    dropout: 0.1
+    learning_rate: 0.001
+    weight_decay: 0.0001

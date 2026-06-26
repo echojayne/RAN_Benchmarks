@@ -1,0 +1,18 @@
+data:
+  prepared_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/prepared_data
+training:
+  output_dir: outputs/traffic_forecasting/tcn_train
+  device: auto
+  batch_size: 64
+  epochs: 20
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  grad_clip_norm: 1.0
+  num_workers: 0
+  seed: 13
+model:
+  name: tcn
+  hidden_channels: 128
+  num_layers: 4
+  kernel_size: 3
+  dropout: 0.1

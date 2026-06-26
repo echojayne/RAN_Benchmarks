@@ -1,0 +1,28 @@
+data:
+  raw_data_dir: ${RAN_BENCHMARK_ASSET_ROOT}/benchmarks/traffic_forecasting/common/raw_data
+  exclude_cell_ids_path: exclude_r2neg_cells.json
+
+training:
+  train_start: 2013-11-01T00:00:00Z
+  train_end: 2013-12-16T00:00:00Z
+  test_start: 2013-12-16T00:00:00Z
+  test_end: 2013-12-23T00:00:00Z
+  val_ratio_within_train: 0.02
+  context_len: 3
+  horizon: 1
+  epochs: 300
+  lr: 0.001
+  weight_decay: 0.0001
+  d_model: 64
+  depth: 4
+  num_heads: 4
+  ffn_dim: 128
+  dropout: 0.1
+  cell_embedding_dim: 16
+  cell_batch_size: 10000
+  eval_cell_batch_size: 10000
+  seed: 42
+
+runtime:
+  output_dir: outputs/itransformer_citywide_final
+  cache_dir: outputs/itransformer_citywide_final/cache

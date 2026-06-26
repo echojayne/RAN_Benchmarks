@@ -1,0 +1,31 @@
+================================================================================
+FINAL TEST SET EVALUATION RESULTS
+================================================================================
+
+Model: adafortitran
+
+Delay Spread (DS) Test Results (dB MSE):
+----------------------------------------
+DS= 50 ns: -31.5823 dB
+DS=100 ns: -30.8798 dB
+DS=150 ns: -29.8710 dB
+DS=200 ns: -30.9936 dB
+DS=250 ns: -30.1779 dB
+DS=300 ns: -28.7014 dB
+
+Multi-Doppler Shift (MDS) Test Results (dB MSE):
+----------------------------------------
+DOP= 200 Hz: -30.2800 dB
+DOP= 400 Hz: -29.9271 dB
+DOP= 600 Hz: -29.0763 dB
+DOP= 800 Hz: -28.5583 dB
+DOP=1000 Hz: -25.8762 dB
+
+Signal-to-Noise Ratio (SNR) Test Results (dB MSE):
+----------------------------------------
+SNR= 0 dB: -21.9348 dB
+SNR= 5 dB: -25.8863 dB
+SNR=10 dB: -28.6807 dB
+SNR=15 dB: -30.2801 dB
+SNR=20 dB: -31.0047 dB
+SNR=25 dB: -31.2685 dB
