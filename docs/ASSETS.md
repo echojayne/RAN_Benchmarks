@@ -48,6 +48,12 @@ Set:
 export RAN_BENCHMARK_ASSET_ROOT=/path/to/ran_benchmark_assets
 ```
 
+For the local migrated workspace on this machine, use:
+
+```bash
+export RAN_BENCHMARK_ASSET_ROOT=/mnt/dky/ran_benchmarks/.local_assets/ai_ran_benchmarks
+```
+
 Then either copy the required assets into the repository paths listed above, or
 create local symlinks from those paths to the asset root. Do not commit local
 symlinks that point to machine-specific absolute paths.

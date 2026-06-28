@@ -60,6 +60,19 @@ Use these environment variables when running commands from arbitrary locations:
 export RAN_BENCHMARK_ROOT=/path/to/RAN_Benchmarks
 export RAN_BENCHMARK_ASSET_ROOT=/path/to/ran_benchmark_assets
 export ELASTIC_INFERENCE_METHODS_ROOT=/path/to/elastic_inference_methods
+export STRUJEPA_ROOT=/path/to/StruJEPA
+export STRUJEPA_RAN_RUN_ROOT=/path/to/strujepa_ran_runs
+```
+
+In this local checkout, the migrated legacy asset root is:
+
+```bash
+export RAN_BENCHMARK_ROOT=/mnt/dky/ran_benchmarks
+export RAN_BENCHMARK_ASSET_ROOT=/mnt/dky/ran_benchmarks/.local_assets/ai_ran_benchmarks
+export AI_RAN_BENCHMARK_ROOT=/mnt/dky/ran_benchmarks/.local_assets/ai_ran_benchmarks
+export ELASTIC_INFERENCE_METHODS_ROOT=/mnt/dky/elastic_inference_methods
+export STRUJEPA_ROOT=/home/users/dky/StruJEPA
+export STRUJEPA_RAN_RUN_ROOT=/mnt/dky/strujepa_ran_runs
 ```
 
 Most examples also work when launched from the method directory because configs
@@ -91,9 +104,10 @@ python -m compileall tasks
 For evaluation examples, start with small limits or CPU mode where supported.
 Large BeamFormer and WiFo evaluations require the external data/weight bundles.
 
-## External Elastic Baselines
+## External Elastic Methods
 
-DynaBERT, MatFormer, and OFA adapters are maintained outside this repository.
-When available, task-level `comparisons/elastic_methods.yaml` files point to
-`${ELASTIC_INFERENCE_METHODS_ROOT}` so original RAN benchmark methods remain
-separate from cross-benchmark elastic inference baselines.
+DynaBERT, MatFormer, OFA, and StruJEPA run artifacts are maintained outside
+this repository. Task-level `comparisons/elastic_methods.yaml` files point to
+`${ELASTIC_INFERENCE_METHODS_ROOT}`, `${STRUJEPA_ROOT}`, and
+`${STRUJEPA_RAN_RUN_ROOT}` so original RAN benchmark methods remain separate
+from cross-benchmark elastic inference methods and StruJEPA retained runs.

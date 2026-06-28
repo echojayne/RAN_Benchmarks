@@ -1,0 +1,41 @@
+version: 1
+task: channel_estimation
+description: External elastic-method comparison roots for OFDM channel estimation.
+
+environment:
+  ran_benchmark_root: ${RAN_BENCHMARK_ROOT}
+  strujepa_root: ${STRUJEPA_ROOT}
+  strujepa_run_root: ${STRUJEPA_RAN_RUN_ROOT}
+  elastic_inference_methods_root: ${ELASTIC_INFERENCE_METHODS_ROOT}
+
+backbones:
+  - adafortitran
+  - ammse
+
+methods:
+  strujepa:
+    role: proposed_method
+    source_root: ${STRUJEPA_ROOT}
+    run_root: ${STRUJEPA_RAN_RUN_ROOT}/runs/channel_estimation
+    configs:
+      adafortitran: ${STRUJEPA_ROOT}/configs/channel_estimation/current_adafortitran.yaml
+      ammse: ${STRUJEPA_ROOT}/configs/channel_estimation/current_ammse.yaml
+    performance_root: ${STRUJEPA_RAN_RUN_ROOT}/performance
+  dynabert:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/adapters/ran_benchmarks/channel_estimation
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/performance
+  matformer:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/adapters/ran_benchmarks/channel_estimation
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/performance
+  ofa:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/adapters/ran_benchmarks/channel_estimation
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/performance

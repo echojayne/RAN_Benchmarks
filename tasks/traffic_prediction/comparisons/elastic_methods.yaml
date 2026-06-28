@@ -1,0 +1,39 @@
+version: 1
+task: traffic_prediction
+description: External elastic-method comparison roots for Milan traffic prediction.
+
+environment:
+  ran_benchmark_root: ${RAN_BENCHMARK_ROOT}
+  strujepa_root: ${STRUJEPA_ROOT}
+  strujepa_run_root: ${STRUJEPA_RAN_RUN_ROOT}
+  elastic_inference_methods_root: ${ELASTIC_INFERENCE_METHODS_ROOT}
+
+backbones:
+  - itransformer
+
+methods:
+  strujepa:
+    role: proposed_method
+    source_root: ${STRUJEPA_ROOT}
+    run_root: ${STRUJEPA_RAN_RUN_ROOT}/runs/traffic_prediction/itransformer
+    configs:
+      itransformer: ${STRUJEPA_ROOT}/configs/traffic_forecasting/current_itransformer.yaml
+    performance_root: ${STRUJEPA_RAN_RUN_ROOT}/performance
+  dynabert:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/adapters/ran_benchmarks/traffic_prediction
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/dynabert/assets/performance
+  matformer:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/adapters/ran_benchmarks/traffic_prediction
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/matformer/assets/performance
+  ofa:
+    role: elastic_baseline
+    source_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa
+    adapter_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/adapters/ran_benchmarks/traffic_prediction
+    run_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/runs
+    performance_root: ${ELASTIC_INFERENCE_METHODS_ROOT}/methods/ofa/assets/performance
